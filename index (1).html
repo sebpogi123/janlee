@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-PH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APEC Schools C. Raymundo Athletes | Sports Fitness and Academic Performance Hub</title>
+<meta name="description" content="Fitness programs, game results, and academic performance tracking for student-athletes of APEC Schools C. Raymundo.">
+<meta name="keywords" content="APEC Schools C. Raymundo, student athletes, sports fitness, academic performance, school sports website">
+<meta name="theme-color" content="#0a3cff">
+<meta property="og:title" content="APEC Schools C. Raymundo Athletes">
+<meta property="og:description" content="Sports fitness and academic performance hub for student-athletes.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#020a2b;
+  --navy:#06155e;
+  --blue:#0a3cff;
+  --cyan:#2de2ff;
+  --ice:#e9fbff;
+  --glow:#7df3ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--abyss);
+  color:var(--ice);
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:500;
+  font-size:1.15rem;
+  line-height:1.4;
+  overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.02em;line-height:.95}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+
+/* Layered diagonal backdrop */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;
+  background:
+    linear-gradient(115deg,transparent 0 55%,rgba(10,60,255,.35) 55% 70%,transparent 70%),
+    linear-gradient(115deg,transparent 0 72%,rgba(45,226,255,.18) 72% 74%,transparent 74%),
+    radial-gradient(circle at 80% 10%,rgba(45,226,255,.25),transparent 40%),
+    var(--abyss);
+}
+
+/* Top bar */
+header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem clamp(1rem,4vw,3rem);
+  position:sticky;top:0;z-index:20;
+  background:linear-gradient(90deg,var(--abyss),rgba(2,10,43,.85));
+  border-bottom:3px solid var(--cyan);
+  backdrop-filter:blur(6px);
+}
+.logo{font-family:'Anton';font-size:1.6rem;letter-spacing:.06em;transform:skewX(-10deg)}
+.logo span{color:var(--cyan)}
+nav{display:flex;gap:.4rem}
+nav a{
+  font-family:'Anton';text-transform:uppercase;font-size:1.05rem;letter-spacing:.05em;
+  padding:.35rem 1.1rem;transform:skewX(-14deg);
+  background:var(--navy);color:var(--cyan);
+  border:2px solid transparent;
+  transition:background .15s,color .15s,transform .15s;
+}
+nav a:hover,nav a:focus-visible,nav a.on{background:var(--ice);color:var(--blue);transform:skewX(-14deg) translateY(-3px);box-shadow:4px 4px 0 var(--cyan)}
+
+/* Hero */
+.hero{
+  min-height:80vh;
+  display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;
+  padding:3rem clamp(1rem,4vw,3rem);
+  position:relative;
+}
+.hero .tag{
+  display:inline-block;background:var(--cyan);color:var(--abyss);
+  font-family:'Anton';padding:.2rem 1rem;transform:skewX(-14deg);
+  letter-spacing:.08em;margin-bottom:1rem;
+}
+.hero h1{
+  font-size:clamp(4rem,12vw,10rem);
+  color:var(--ice);
+  text-shadow:6px 6px 0 var(--blue),12px 12px 0 rgba(45,226,255,.35);
+  transform:skewX(-8deg) rotate(-2deg);
+  animation:slam .7s cubic-bezier(.2,1.4,.4,1) both;
+}
+.hero h1 em{font-style:normal;color:var(--cyan);display:block}
+.hero p{max-width:34ch;margin:1.5rem 0;font-size:1.3rem;color:var(--glow)}
+.btn{
+  display:inline-block;font-family:'Anton';text-transform:uppercase;letter-spacing:.06em;font-size:1.3rem;
+  padding:.7rem 2.2rem;background:var(--ice);color:var(--blue);
+  clip-path:polygon(0 0,100% 0,92% 100%,0 100%);
+  transition:background .15s,transform .15s;
+}
+.btn:hover{background:var(--cyan);transform:translateX(6px)}
+@keyframes slam{from{opacity:0;transform:skewX(-8deg) rotate(-2deg) scale(1.5)}to{opacity:1}}
+
+/* Calendar card — P3 style date */
+.calendar{
+  background:var(--ice);color:var(--abyss);
+  padding:1.2rem 1.5rem 1.6rem;
+  clip-path:polygon(6% 0,100% 0,94% 100%,0 100%);
+  box-shadow:0 0 60px rgba(45,226,255,.5);
+  text-align:center;
+  border-left:10px solid var(--blue);
+}
+.calendar .month{font-family:'Anton';font-size:1.3rem;color:var(--blue);letter-spacing:.2em}
+.calendar .day{font-family:'Anton';font-size:7rem;line-height:1;color:var(--blue);text-shadow:4px 4px 0 var(--cyan)}
+.calendar .label{font-family:'Anton';font-size:1.8rem}
+.calendar .vs{display:flex;justify-content:space-around;margin-top:.8rem;font-family:'Anton';font-size:1.6rem}
+.calendar .vs b{color:var(--blue);font-weight:400}
+.calendar small{display:block;font-size:1rem;margin-top:.5rem;color:var(--navy)}
+
+/* Marquee */
+.ticker{
+  background:var(--cyan);color:var(--abyss);overflow:hidden;white-space:nowrap;
+  transform:skewY(-1.5deg);margin:2rem 0;padding:.5rem 0;
+  border-top:4px solid var(--ice);border-bottom:4px solid var(--blue);
+}
+.ticker div{display:inline-block;font-family:'Anton';font-size:1.5rem;letter-spacing:.08em;animation:scroll 28s linear infinite}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+section{padding:4rem clamp(1rem,4vw,3rem)}
+.title{
+  font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:2rem;
+  display:inline-block;padding:.2rem 1.5rem .2rem 1rem;
+  background:var(--blue);transform:skewX(-12deg);
+  border-left:12px solid var(--cyan);
+}
+
+/* Scores */
+.scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.score{
+  background:linear-gradient(160deg,var(--navy),var(--abyss));
+  border:2px solid var(--cyan);padding:1.2rem 1.4rem;
+  clip-path:polygon(0 0,100% 0,100% 85%,92% 100%,0 100%);
+  transition:transform .2s,box-shadow .2s;
+}
+.score:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--blue)}
+.score .sport{color:var(--cyan);font-size:1rem;letter-spacing:.15em;text-transform:uppercase}
+.row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(125,243,255,.25);padding:.3rem 0}
+.row span:first-child{font-family:'Anton';font-size:1.5rem;text-transform:uppercase}
+.row span:last-child{font-family:'Anton';font-size:2.2rem;color:var(--cyan)}
+.row.win span:last-child{color:var(--ice);text-shadow:0 0 14px var(--cyan)}
+.status{margin-top:.6rem;font-size:1rem;color:var(--glow)}
+.live{background:#ff2d55;color:#fff;padding:0 .5rem;margin-right:.4rem;font-family:'Anton';animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:.4}}
+
+/* Standings */
+.table-wrap{overflow-x:auto;max-width:100%}
+table{width:100%;border-collapse:separate;border-spacing:0 .5rem;min-width:520px}
+th{font-family:'Anton';text-align:left;color:var(--cyan);font-weight:400;letter-spacing:.1em;padding:.3rem 1rem;text-transform:uppercase}
+td{background:var(--navy);padding:.7rem 1rem;font-size:1.3rem}
+td:first-child{font-family:'Anton';color:var(--cyan);font-size:1.6rem;border-left:8px solid var(--cyan);width:4rem}
+tr:nth-child(1) td{background:var(--ice);color:var(--blue)}
+tr:nth-child(1) td:first-child{color:var(--blue);border-left-color:var(--blue)}
+tr:hover td{filter:brightness(1.2)}
+
+/* News */
+.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+article{background:var(--ice);color:var(--abyss);padding:1.4rem;position:relative;transition:transform .2s}
+article::before{content:"";position:absolute;top:0;right:0;border-style:solid;border-width:0 3rem 3rem 0;border-color:transparent var(--blue) transparent transparent}
+article:hover{transform:rotate(-1.5deg) scale(1.02)}
+article h3{font-size:1.9rem;color:var(--blue);margin:.3rem 0 .6rem}
+article small{font-family:'Anton';letter-spacing:.1em;color:var(--navy)}
+
+
+/* Player spotlight */
+.spot{display:grid;grid-template-columns:minmax(220px,1fr) 1.6fr;gap:2rem;align-items:center}
+.portrait{
+  aspect-ratio:3/4;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,var(--blue),var(--navy));
+  clip-path:polygon(12% 0,100% 0,88% 100%,0 100%);
+  border-left:10px solid var(--cyan);
+}
+.portrait img,.portrait svg{width:100%;height:100%;object-fit:cover;display:block}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 60%,rgba(45,226,255,.35) 60% 66%,transparent 66%)}
+.spot h3{font-size:clamp(3rem,8vw,6rem);color:var(--ice);text-shadow:5px 5px 0 var(--blue);transform:skewX(-8deg)}
+.spot .role{display:inline-block;background:var(--cyan);color:var(--abyss);font-family:'Anton';padding:.1rem .9rem;transform:skewX(-14deg);margin:.5rem 0 1rem;letter-spacing:.08em}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.2rem}
+.stat{background:var(--ice);color:var(--blue);padding:.6rem .8rem;clip-path:polygon(0 0,100% 0,92% 100%,0 100%);text-align:center}
+.stat b{display:block;font-family:'Anton';font-weight:400;font-size:2.6rem;line-height:1}
+.stat span{font-size:1rem;color:var(--navy)}
+@media(max-width:800px){.spot{grid-template-columns:1fr}.portrait{max-width:300px}}
+
+/* Stat bars (academic + fitness) */
+.panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.card{background:linear-gradient(160deg,var(--navy),var(--abyss));border:2px solid var(--cyan);padding:1.4rem;clip-path:polygon(0 0,100% 0,100% 90%,94% 100%,0 100%)}
+.card h3{font-size:2rem;color:var(--cyan);margin-bottom:1rem}
+.bar{margin-bottom:.9rem}
+.bar label{display:flex;justify-content:space-between;font-family:'Anton';letter-spacing:.05em;text-transform:uppercase}
+.bar .track{height:14px;background:rgba(125,243,255,.15);transform:skewX(-20deg);margin-top:.2rem}
+.bar .fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 10px var(--cyan)}
+.note{font-size:1rem;color:var(--glow);margin-top:1rem}
+
+/* Training tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.tabs button{
+  font-family:'Anton';text-transform:uppercase;font-size:1.1rem;letter-spacing:.05em;cursor:pointer;
+  padding:.4rem 1.3rem;transform:skewX(-14deg);border:2px solid var(--cyan);
+  background:var(--navy);color:var(--cyan);transition:background .15s,color .15s
+}
+.tabs button[aria-selected="true"],.tabs button:hover{background:var(--ice);color:var(--blue);box-shadow:4px 4px 0 var(--cyan)}
+.tabpanel[hidden]{display:none}
+.exlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;list-style:none}
+.exlist li{background:var(--ice);color:var(--abyss);padding:1rem 1.2rem;border-left:8px solid var(--blue)}
+.exlist b{display:block;font-family:'Anton';font-weight:400;font-size:1.5rem;color:var(--blue);text-transform:uppercase}
+.exlist em{font-style:normal;color:var(--navy);font-size:1rem}
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.tip{background:linear-gradient(160deg,var(--navy),var(--abyss));border:2px solid var(--cyan);padding:1.2rem 1.4rem;clip-path:polygon(0 0,100% 0,100% 88%,93% 100%,0 100%)}
+.tip h3{font-size:1.7rem;color:var(--cyan);margin-bottom:.4rem}
+
+/* Logo, motto, KaKaMPI, team */
+.logo{display:flex;align-items:center;gap:.6rem}
+.school-logo{height:56px;width:auto;transform:none;background:#fff;padding:3px;border-radius:2px;box-shadow:0 0 0 2px var(--cyan)}
+.motto{font-family:'Anton';font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);margin-top:.5rem;transform:skewX(-8deg);display:inline-block;border-bottom:4px solid var(--ice)}
+.mch{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-bottom:2rem}
+.mch div{background:var(--ice);color:var(--abyss);padding:1.1rem 1.3rem;border-left:10px solid var(--blue)}
+.mch h3{font-size:2rem;color:var(--blue);margin-bottom:.3rem}
+.values{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;list-style:none}
+.values li{background:linear-gradient(160deg,var(--navy),var(--abyss));border:2px solid var(--cyan);padding:1.2rem;clip-path:polygon(0 0,100% 0,100% 88%,92% 100%,0 100%)}
+.values .k{font-family:'Anton';font-size:3.4rem;color:var(--cyan);line-height:1;text-shadow:3px 3px 0 var(--blue)}
+.values b{display:block;font-family:'Anton';font-weight:400;font-size:1.5rem;text-transform:uppercase}
+.values em{font-style:normal;color:var(--glow);font-size:1rem}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;list-style:none}
+.team li{background:var(--ice);color:var(--blue);font-family:'Anton';text-transform:uppercase;font-size:1.3rem;padding:.7rem 1rem;clip-path:polygon(0 0,100% 0,94% 100%,0 100%);border-left:8px solid var(--cyan)}
+
+.champ{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;background:var(--cyan);color:var(--abyss);padding:.9rem 1.4rem;clip-path:polygon(0 0,100% 0,97% 100%,0 100%);border-left:10px solid var(--ice)}
+.champ .badge{font-family:'Anton';font-size:2.4rem;line-height:1;color:var(--blue)}
+.champ p{font-size:1.15rem}
+.champ b{font-family:'Anton';font-weight:400;text-transform:uppercase;font-size:1.4rem}
+
+.dyk{display:block;margin-top:.5rem;padding-top:.5rem;border-top:2px dashed var(--abyss);font-size:1.05rem}
+.dyk strong{font-family:'Anton';font-weight:400;text-transform:uppercase;letter-spacing:.05em;color:var(--blue)}
+
+.easy{display:block;margin-top:.5rem;padding:.3rem .6rem;background:var(--abyss);color:var(--cyan);font-size:1rem;border-left:4px solid var(--cyan)}
+.easy strong{font-family:'Anton';font-weight:400;text-transform:uppercase;letter-spacing:.05em}
+
+footer{
+  margin-top:3rem;padding:2rem clamp(1rem,4vw,3rem);
+  background:var(--blue);border-top:6px solid var(--cyan);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+  font-family:'Anton';letter-spacing:.08em;text-transform:uppercase;
+}
+
+@media(max-width:800px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  nav a{padding:.3rem .6rem;font-size:.9rem}
+  .logo{font-size:1.2rem}
+  header{flex-direction:column;gap:.6rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#top" class="logo"><img class="school-logo" src="data:image/webp;base64,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" alt="APEC Schools logo" onerror="this.style.display='none'"><span>APEC <span>ATHLETES</span></span></a>
+  <nav aria-label="Main">
+    <a href="#top" class="on">Home</a>
+    <a href="#training">Training</a>
+    <a href="#balance">Balance</a>
+    <a href="#kakampi">KaKaMPI</a>
+    <a href="#group">About Us</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div>
+      <span class="tag">C. Raymundo · Student-Athlete Hub</span>
+      <h1>Train<em>Hard</em>Study Harder</h1>
+      <div class="motto">Better each day</div>
+      <p>Exercises, study tips and the KaKaMPI values to help APEC Schools C. Raymundo athletes get better each day.</p>
+      <a class="btn" href="#training">Start training</a>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div>BETTER EACH DAY &nbsp;★&nbsp; PASS YOUR SUBJECTS, PLAY THE GAME &nbsp;★&nbsp; TRAIN SMART &nbsp;★&nbsp; BALANCE SPORTS AND STUDIES &nbsp;★&nbsp; BETTER EACH DAY &nbsp;★&nbsp; PASS YOUR SUBJECTS, PLAY THE GAME &nbsp;★&nbsp; TRAIN SMART &nbsp;★&nbsp; BALANCE SPORTS AND STUDIES &nbsp;★&nbsp;</div>
+  </div>
+
+
+
+  <section id="training">
+    <h2 class="title">Training</h2>
+    <div class="tabs" role="tablist" aria-label="Choose a sport"><button role="tab" id="t-combat" aria-controls="p-combat" aria-selected="true">Combat Sports</button><button role="tab" id="t-badminton" aria-controls="p-badminton" aria-selected="false">Badminton</button><button role="tab" id="t-volleyball" aria-controls="p-volleyball" aria-selected="false">Volleyball</button><button role="tab" id="t-basketball" aria-controls="p-basketball" aria-selected="false">Basketball</button></div>
+    <div class="tabpanel" role="tabpanel" id="p-combat" aria-labelledby="t-combat"><div class="champ"><span class="badge" aria-hidden="true">NCR</span><p><b>NCR Regional Meet · Wushu</b><br>Janlee Diaz represented Pasig in wushu, a combat sport, at the NCR Regional Meet last school year.<span class="dyk"><strong>Did you know?</strong> Wushu is a Chinese martial art with two main events: taolu (forms) and sanda (full-contact sparring).</span></p></div><ul class="exlist"><li><b>Horse stance hold</b><em>3 holds of 30–45 sec. Builds leg strength and a solid base.</em><span class="easy"><strong>Easy start:</strong> Hold for 15–20 seconds and stand a little higher.</span></li><li><b>Stance transitions</b><em>3 sets of 10. Move smoothly between stances for balance and control.</em></li><li><b>Front and side kicks</b><em>3 sets of 10 per leg. Practice slowly for form, then add speed.</em></li><li><b>Jump rope and jumps</b><em>5 rounds of 1 min. Explosive legs for jumping techniques.</em><span class="easy"><strong>Easy start:</strong> Do 2–3 rounds of 30 seconds, or just hop in place.</span></li><li><b>Hip and leg stretching</b><em>10 min after training. Flexibility for high kicks and splits.</em></li></ul></div><div class="tabpanel" role="tabpanel" id="p-badminton" aria-labelledby="t-badminton" hidden><div class="champ"><span class="badge" aria-hidden="true">1st</span><p><b>Fun Week Singles Champion</b><br>Raiana Jade Pedraza won the badminton singles category at the APEC Schools intramurals, called Fun Week.<span class="dyk"><strong>Did you know?</strong> In singles, a player covers the whole court alone, so footwork and stamina matter as much as smashes.</span></p></div><ul class="exlist"><li><b>Split-step drill</b><em>3 sets of 20 hops. Faster first step toward the shuttle.</em><span class="easy"><strong>Easy start:</strong> Do 2 sets of 10 small hops, no rush.</span></li><li><b>Lunges to the corners</b><em>3 sets of 10 per side. Court movement and leg strength.</em></li><li><b>Shuttle runs</b><em>6 x 10 meters. Agility and recovery between rallies.</em><span class="easy"><strong>Easy start:</strong> Jog 3 x 10 meters at an easy pace.</span></li><li><b>Wrist and forearm curls</b><em>3 sets of 15 with a light weight. Better racket control.</em></li><li><b>Shoulder circles</b><em>2 sets of 15 each way. Warm-up that helps protect smashes.</em></li></ul></div><div class="tabpanel" role="tabpanel" id="p-volleyball" aria-labelledby="t-volleyball" hidden><ul class="exlist"><li><b>Squat jumps</b><em>3 sets of 10. Higher spikes and blocks.</em><span class="easy"><strong>Easy start:</strong> Do plain squats first, 3 sets of 8, then add a small jump.</span></li><li><b>Wall passing</b><em>3 sets of 20 against a wall. Cleaner forearm passes.</em></li><li><b>Push-ups</b><em>3 sets of 10–15. Arm and chest strength for serves.</em><span class="easy"><strong>Easy start:</strong> Do knee push-ups, 3 sets of 5–8.</span></li><li><b>Lateral shuffles</b><em>4 x 10 meters. Quicker defense and court cover.</em><span class="easy"><strong>Easy start:</strong> Walk the side steps slowly over 5 meters.</span></li><li><b>Calf raises</b><em>3 sets of 15. Stronger, more stable landings.</em></li></ul></div><div class="tabpanel" role="tabpanel" id="p-basketball" aria-labelledby="t-basketball" hidden><ul class="exlist"><li><b>Ball-handling drills</b><em>10 min dribbling with both hands. Better control under pressure.</em></li><li><b>Defensive slides</b><em>4 x 10 meters. Quick lateral movement.</em><span class="easy"><strong>Easy start:</strong> Slide slowly for 2 x 5 meters with a low, steady stance.</span></li><li><b>Box or step jumps</b><em>3 sets of 8. Explosive power for rebounds.</em><span class="easy"><strong>Easy start:</strong> Step up and down on a low step, 3 sets of 6.</span></li><li><b>Free-throw practice</b><em>50 shots, tracked. Consistency late in the game.</em></li><li><b>Interval sprints</b><em>6 x 20 seconds, 40 sec rest. Match-pace conditioning.</em><span class="easy"><strong>Easy start:</strong> Jog 4 x 15 seconds with 60 seconds of rest.</span></li></ul></div>
+    <p class="note">Warm up for 5–10 minutes first, drink water, and stop if something hurts. Ask your coach or PE teacher to adjust sets and reps to your level.</p>
+  </section>
+
+  <section id="balance">
+    <h2 class="title">Study Balance</h2>
+    <div class="tips">
+      <div class="tip"><h3>Plan your week</h3><p>Write down practice, games and deadlines every Sunday. Put study blocks around them, not instead of them.</p></div>
+      <div class="tip"><h3>Study in short blocks</h3><p>Try 25 minutes of focus, then a 5-minute break. Do the hardest subject when you have the most energy.</p></div>
+      <div class="tip"><h3>Use travel and rest time</h3><p>Review notes or flashcards on the way to games and between matches.</p></div>
+      <div class="tip"><h3>Sleep 8 hours</h3><p>Sleep helps both memory and muscle recovery. Avoid all-night cramming before a game day.</p></div>
+      <div class="tip"><h3>Talk to your teachers</h3><p>Tell them your game schedule early so you can agree on make-up work or extra time.</p></div>
+      <div class="tip"><h3>Combat sports</h3><p>Training is intense, so study right after a meal and a rest, not when you are exhausted.</p></div>
+      <div class="tip"><h3>Badminton</h3><p>Tournament days run long. Bring notes for the waiting time between matches.</p></div>
+      <div class="tip"><h3>Volleyball and basketball</h3><p>Team trips and evening games are common, so finish tough homework before game days.</p></div>
+    </div>
+  </section>
+
+  <section id="kakampi">
+    <h2 class="title">KaKaMPI</h2>
+    <p style="max-width:60ch;margin-bottom:1.5rem">Our MCH (Mindset, Character, Habits) subject is about becoming better each day, in the classroom and on the court. Here is how it applies to athletes.</p>
+    <div class="mch">
+      <div><h3>Mindset</h3><p>See losses and hard tests as practice. Set small goals for each training and each lesson.</p></div>
+      <div><h3>Character</h3><p>Play fair, respect teammates and opponents, and own your mistakes.</p></div>
+      <div><h3>Habits</h3><p>Warm up, sleep, study and review at the same times every day until they stick.</p></div>
+    </div>
+    <ul class="values">
+      <li><span class="k">Ka</span><b>Kahusayan</b><em>Excellence: give your best effort in every drill and every subject.</em></li>
+      <li><span class="k">Ka</span><b>Katapatan</b><em>Loyalty: stay committed to your team, your school and your goals.</em></li>
+      <li><span class="k">M</span><b>Malasakit</b><em>Compassion: help teammates who are struggling in sports or studies.</em></li>
+      <li><span class="k">P</span><b>Pagkamalikhain</b><em>Creativity: find new plays, new routines and new ways to study.</em></li>
+      <li><span class="k">I</span><b>Integridad</b><em>Integrity: do the right thing, even when no one is watching.</em></li>
+    </ul>
+  </section>
+
+
+
+  <section id="group">
+    <h2 class="title">About Us</h2>
+    <p style="max-width:60ch;margin-bottom:1.5rem">We are Group 4, the researchers behind this website.</p>
+    <ul class="team">
+      <li>Euhann Zedrick G. Surigao</li>
+      <li>Raiana Jade Pedraza</li>
+      <li>Kristine Mae Castro</li>
+      <li>Janlee Diaz</li>
+      <li>Clark Gavin Enriquez</li>
+      <li>Kirby Seth Miguel</li>
+      <li>Princess Jewel Ruiz</li>
+    </ul>
+    <p class="note">The Development and Visibility Evaluation of Sports Fitness and Website for Academic Performance of APEC Schools C. Raymundo Athletes</p>
+  </section>
+</main>
+
+<footer>
+  <span>APEC Schools C. Raymundo</span>
+  <span>Better each day</span>
+</footer>
+
+<script>
+document.querySelectorAll('.tabs').forEach(function(tabs){
+  var btns=tabs.querySelectorAll('button');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){
+        var on=x===b;
+        x.setAttribute('aria-selected',on);
+        document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>
